@@ -40,17 +40,19 @@ export const SensorCard = ({ title, value, unit, statusMode = false }: SensorCar
   }
 
   return (
-    <div className="rounded-card bg-white p-5 shadow-card">
-      <p className="text-sm font-semibold uppercase tracking-wide text-muted">{title}</p>
-      <div className="mt-3 flex items-baseline gap-2">
+    <div className="rounded-lg bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 hover:border-cyan-400 hover:shadow-xl transition-all duration-300 p-6 shadow-md">
+      <p className="text-xs font-bold uppercase tracking-widest text-muted">{title}</p>
+      <div className="mt-4 flex items-baseline gap-2">
         {statusLabel ? (
-          <span className={`rounded-full px-3 py-1 text-sm font-semibold ${statusClasses}`}>
+          <span className={`rounded-lg px-3 py-2 text-xs font-bold ${statusClasses}`}>
             {statusLabel}
           </span>
         ) : (
-          <span className="text-3xl font-semibold text-ink">{displayValue}</span>
+          <>
+            <span className="text-4xl font-bold text-cyan-300">{displayValue}</span>
+            {unit ? <span className="text-xs font-semibold text-muted">{unit}</span> : null}
+          </>
         )}
-        {!statusLabel && unit ? <span className="text-sm text-muted">{unit}</span> : null}
       </div>
     </div>
   )

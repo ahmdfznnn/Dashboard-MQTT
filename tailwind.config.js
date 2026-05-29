@@ -4,17 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        surface: '#f7f7f9',
-        ink: '#1f1f24',
-        muted: '#6b6f76',
-        accent: '#1d9bf0',
-        success: '#16a34a',
+        surface: '#0f1729',
+        ink: '#ecf0f7',
+        muted: '#cbd5e1',
+        accent: '#00d9ff',
+        success: '#10b981',
         warning: '#f59e0b',
         danger: '#ef4444',
       },
       boxShadow: {
-        soft: '0 10px 30px rgba(31, 31, 36, 0.08)',
-        card: '0 8px 20px rgba(31, 31, 36, 0.06)',
+        soft: '0 10px 30px rgba(0, 0, 0, 0.5)',
+        card: '0 8px 20px rgba(0, 0, 0, 0.4)',
       },
       borderRadius: {
         card: '16px',

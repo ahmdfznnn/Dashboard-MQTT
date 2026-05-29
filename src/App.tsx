@@ -16,38 +16,69 @@ function App() {
   const { connectionStatus, lastMessageAt, sensors, charts } = useMqttData()
 
   return (
-    <div className="min-h-screen bg-surface px-4 py-6 text-ink sm:px-6 lg:px-10">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-        <header className="flex flex-col gap-4 rounded-card bg-white p-6 shadow-soft sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-              IoT Monitoring
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold text-ink sm:text-4xl">
-              IoT Realtime Dashboard
-            </h1>
-            <p className="mt-2 text-sm text-muted">
-              Last update: <span className="font-semibold text-ink">{formatTimestamp(lastMessageAt)}</span>
-            </p>
+    <div className="min-h-screen bg-surface text-ink">
+      {/* Top Header Bar */}
+      <div className="border-b border-slate-700 bg-gradient-to-r from-slate-800 to-slate-900">
+        <div className="mx-auto max-w-7xl px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+                IoT Realtime System
+              </p>
+              <h1 className="mt-2 text-3xl font-bold text-white">
+                Dashboard Monitor
+              </h1>
+            </div>
+            <div className="text-right">
+              <p className="text-xs uppercase tracking-widest text-muted">
+                Last Update
+              </p>
+              <p className="mt-1 text-lg font-semibold text-cyan-300">
+                {formatTimestamp(lastMessageAt)}
+              </p>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="mx-auto max-w-7xl px-6 py-8">
+        {/* Status Section */}
+        <div className="mb-8 rounded-lg bg-gradient-to-r from-slate-800 to-slate-800 border border-slate-700 p-6 shadow-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-muted">Connection Status</p>
+              <p className="mt-1 text-base text-slate-300">MQTT Broker Connection</p>
+            </div>
             <StatusBadge status={connectionStatus} />
           </div>
-        </header>
+        </div>
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-          <SensorCard title="Suhu" value={sensors.suhu.value} unit="°C" />
-          <SensorCard title="Kelembapan" value={sensors.kelembapan.value} unit="%" />
-          <SensorCard title="Kecepatan Angin" value={sensors.kecepatan_angin.value} unit="m/s" />
-          <SensorCard title="Push Button" value={sensors.push_button.value} statusMode />
-          <SensorCard title="LED" value={sensors.led.value} statusMode />
-        </section>
+        {/* Sensor Cards Section */}
+        <div className="mb-8">
+          <h2 className="mb-4 text-sm font-bold uppercase tracking-widest text-cyan-400">
+            📊 Real-time Sensors
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <SensorCard title="Suhu" value={sensors.suhu.value} unit="°C" />
+            <SensorCard title="Kelembapan" value={sensors.kelembapan.value} unit="%" />
+            <SensorCard title="Angin" value={sensors.kecepatan_angin.value} unit="m/s" />
+            <SensorCard title="Push Button" value={sensors.push_button.value} statusMode />
+            <SensorCard title="LED" value={sensors.led.value} statusMode />
+          </div>
+        </div>
 
-        <section className="grid gap-4 lg:grid-cols-3">
-          <RealtimeChart title="Grafik Suhu" data={charts.suhu} unit="°C" />
-          <RealtimeChart title="Grafik Kelembapan" data={charts.kelembapan} unit="%" />
-          <RealtimeChart title="Grafik Kecepatan Angin" data={charts.kecepatan_angin} unit="m/s" />
-        </section>
+        {/* Charts Section */}
+        <div>
+          <h2 className="mb-4 text-sm font-bold uppercase tracking-widest text-cyan-400">
+            📈 Analytics & Trends
+          </h2>
+          <div className="grid gap-4 lg:grid-cols-3">
+            <RealtimeChart title="Suhu (°C)" data={charts.suhu} unit="°C" />
+            <RealtimeChart title="Kelembapan (%)" data={charts.kelembapan} unit="%" />
+            <RealtimeChart title="Angin (m/s)" data={charts.kecepatan_angin} unit="m/s" />
+          </div>
+        </div>
       </div>
     </div>
   )

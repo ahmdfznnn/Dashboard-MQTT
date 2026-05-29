@@ -17,36 +17,35 @@ interface RealtimeChartProps {
 export const RealtimeChart = ({ title, data, unit }: RealtimeChartProps) => {
   if (data.length === 0) {
     return (
-      <div className="rounded-card bg-white p-5 shadow-card">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">{title}</h3>
-        </div>
-        <div className="mt-6 flex h-48 items-center justify-center text-sm text-muted">
-          No data yet
+      <div className="rounded-lg bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 p-6 shadow-md">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-muted">{title}</h3>
+        <div className="mt-6 flex h-48 items-center justify-center text-sm text-slate-500">
+          Waiting for data...
         </div>
       </div>
     )
   }
 
   return (
-    <div className="rounded-card bg-white p-5 shadow-card">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">{title}</h3>
-      </div>
-      <div className="mt-4 h-48">
+    <div className="rounded-lg bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700 p-6 shadow-md">
+      <h3 className="text-xs font-bold uppercase tracking-widest text-muted">{title}</h3>
+      <div className="mt-4 h-56">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
-            <XAxis dataKey="time" tick={{ fontSize: 12 }} stroke="#c4c4c4" />
-            <YAxis tick={{ fontSize: 12 }} stroke="#c4c4c4" width={36} />
+            <XAxis dataKey="time" tick={{ fontSize: 12 }} stroke="#475569" />
+            <YAxis tick={{ fontSize: 12 }} stroke="#475569" width={36} />
             <Tooltip
               contentStyle={{
-                borderRadius: '12px',
-                border: '1px solid rgba(15, 23, 42, 0.1)',
-                boxShadow: '0 12px 24px rgba(15, 23, 42, 0.12)',
+                borderRadius: '10px',
+                border: '1px solid rgba(34, 197, 255, 0.4)',
+                backgroundColor: '#1e293b',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.6)',
+                color: '#ecf0f7',
               }}
               formatter={(value) => [`${value} ${unit}`, title]}
+              labelStyle={{ color: '#ecf0f7' }}
             />
-            <Line type="monotone" dataKey="value" stroke="#1d9bf0" strokeWidth={2.4} dot={false} />
+            <Line type="monotone" dataKey="value" stroke="#00d9ff" strokeWidth={2.5} dot={false} isAnimationActive={true} />
           </LineChart>
         </ResponsiveContainer>
       </div>
