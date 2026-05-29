@@ -4,8 +4,8 @@
 #include <PubSubClient.h>
 
 // Fill in SSID and password later
-const char *WIFI_SSID = "EKO";
-const char *WIFI_PASS = "alhamdulillah";
+const char *WIFI_SSID = "IOT";
+const char *WIFI_PASS = "U17d!pT01";
 
 const char *MQTT_HOST = "w46c6114.ala.asia-southeast1.emqxsl.com";
 const uint16_t MQTT_PORT = 8883;
