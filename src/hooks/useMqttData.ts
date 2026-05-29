@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import mqtt, { type IClientOptions, type MqttClient } from 'mqtt'
 import { MQTT_BROKER_URL, MQTT_PASSWORD, MQTT_TOPIC, MQTT_USERNAME } from '../config/mqttConfig'
 import type {
